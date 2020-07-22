@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class='container '>
+<div class='row mt-5 '>
+  <div class="col-lg-4 offset-lg-2 text-center">
+    <img class="img-fluid mt-5" src="{% static 'img/login.png' %}" alt="">
+  </div>
+<div class='col-lg-4 '>
+<div class="jumbotron  jumbotron-fluid">
+  
+    <div class='container'>
+      
+    <h2 class='mb-4 text-center text-primary'>Log in</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class='btn btn-primary' type="submit">Login</button>
+  </form>
+  <small>Need An Account?<a href="{% url 'register' %}">Create now</a></small>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+  
+{% endblock %}

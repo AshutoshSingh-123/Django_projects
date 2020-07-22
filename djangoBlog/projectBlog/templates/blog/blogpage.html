@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class='container'> 
+ <div class='row'> 
+ <div class='col-lg-8 offset-lg-2 '> 
+   {% for object in object_list %}
+<article class="media content-section postvie mt-3">
+   <img style='width:80px; '  class="rounded-circle account-img mr-1" src="{{object.author.profile.image.url}}" alt="" srcset="">
+ <div class="media-body">
+  <div class="article-metadata">
+   <a class="mr-2" href="/allblog/{{object.author.id}}">{{ object.author }}</a>
+   <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+  </div>
+  <a class="float-right btn btn-outline-primary" href="detail/{{object.id}}">Read More...</a>
+  <h2><a class="article-title forH2" href="detail/{{object.id}}">{{ object.title }}</a></h2>
+  <p class="article-content">{{ object.content|slice:":100" }} <span>..........</span></p>
+ </div>
+</article>
+  {% endfor %}
+
+ </div>
+ </div>
+ </div> 
+ 
+{% endblock %}
+
+
+
